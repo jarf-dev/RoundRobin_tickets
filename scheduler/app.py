@@ -3,7 +3,7 @@ import schedule
 import configparser
 
 import localUtils
-from roundRobin_classic import roundRobin2 as roundRobin
+from roundRobin_classic import roundRobin
 
 config = configparser.ConfigParser()
 config.read('conf.cfg')
