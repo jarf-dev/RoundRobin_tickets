@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+
+  scheduler:
+    image: img_scheduler
+    container_name: scheduler
+    volumes:
+      - ./data:/usr/src/app/data
+      - ./config:/usr/src/app/config
+  
+  web:
+    image: img_webserver
+    container_name: web_server
+    ports:
+      - "5000:5000"
+    volumes:
+    - ./data:/usr/src/app/data
+    - ./config/:/usr/src/app/config
