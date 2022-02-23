@@ -95,15 +95,23 @@ def getZendeskViews():
 # Función que asigna un ticket a un determinado usuario
 def assignTicket(ticketId,agentId,*args):
 
-    data=f"""
-        {{"ticket":{{
-            "assignee_id":{agentId},
-            "additional_tags":[
-                {",".join('"'+str(e)+'"' for e in args)}
-            ]
-        }}
-        }}
-    """
+    if args:
+        data=f"""
+            {{"ticket":{{
+                "assignee_id":{agentId},
+                "additional_tags":[
+                    {",".join('"'+str(e)+'"' for e in args)}
+                ]
+            }}
+            }}
+        """
+    else:
+        data=f"""
+            {{"ticket":{{
+                "assignee_id":{agentId}
+            }}
+            }}
+        """
     zendeskResponse=putZendesk(f"tickets/update_many.json?ids={ticketId}",data)
 
     return zendeskResponse
