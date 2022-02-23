@@ -29,9 +29,6 @@ logger.addHandler(stdout_handler)
 logger.info('Reinicia ciclo de rutina')
 
 
-def roundRobin2(idRutina):
-    logger.info('hola que hace')
-
 def roundRobin(idRutina):
 
     try:
@@ -76,7 +73,7 @@ def roundRobin(idRutina):
             # asignación_equitativa_ejecutada
             idTicket=ticket['id']
             idZendeskAgente=agentesActivos[idAgente]['idAgenteZendesk']
-            zendeskUtils.assignTicket(ticket['id'],agentesActivos[idAgente]['idAgenteZendesk'],'asignacion_equitativa_ejecutada')
+            zendeskUtils.assignTicket(ticket['id'],agentesActivos[idAgente]['idAgenteZendesk'],rutintaData['Etiquetas'])
             logger.info(f'rutina: {idRutina}. ticket {idTicket} fue asignado al agente {idZendeskAgente}')
             localUtils.updateRecordTable('CargaAgentes',id=agentesActivos[idAgente]['id'],marcadorTurno=0)
             idAgente=loopId(idAgente,len(agentesActivos))
