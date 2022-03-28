@@ -194,7 +194,7 @@ def indivCargaAgentes(id):
             agentesZendesk=json.loads(zendeskUtils.getZendeskUsers())
 
             for agente in agentesRutina:
-                extra=[x for x in agentesZendesk if str(x["idZendesk"])==agente["idAgenteZendesk"]][0]
+                extra=[x for x in agentesZendesk if str(x["idZendesk"])==str(agente["idAgenteZendesk"])][0]
                 agente["nombre"]=extra["nombre"]
                 agente["email"]=extra["email"]
                 agente["idZendesk"]=extra["idZendesk"]
